@@ -1,0 +1,49 @@
+{
+    "exp_name": "bmav_post_1",
+    "agent": "BMAVAgent",
+    "device": "cuda:1",
+    "train_val_dataset_fp": "../posterior_trainval.csv",
+    "test_dataset_fp": "../posterior_test.csv",
+    "num_samples": 10,
+    "patient_id_col": "empi_anon",
+    "accession_id_col":"acc_anon",
+    "model_columns": {
+        "img_path_col": "png_path",
+        "img_view_col": "final_laterality",
+        "bbox_col": [
+            "x_min",
+            "y_min",
+            "x_max",
+            "y_max"
+        ],
+        "labels_col": "Label"
+    },
+    "num_epochs": 25,
+    "val_size": 0.2,
+    "bmav_params": {
+        "pretrained_backbone": "densenet121",
+        "in_features": 1002,
+        "dropout_1": 0.2,
+        "dropout_2": 0.4
+    },
+    "backbone_lr": 0.00021,
+    "modelhead_lr": 0.00063,
+    "scheduler_params": {
+        "step_size": 3,
+        "gamma": 0.5
+    },
+    "aug_params": {
+        "size_val": 256,
+        "contrast_val": 0.25,
+        "hue_val": 0.25,
+        "grayscale_prob": 0.1,
+        "hflip_prob": 0.5,
+        "degree_val": 0,
+        "shear_val": 5
+    },
+    "dataloader_params": {
+        "batch_size": 32,
+        "shuffle": true,
+        "num_workers": 4
+    }
+}

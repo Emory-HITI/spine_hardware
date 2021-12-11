@@ -1,0 +1,1 @@
+python main.py configs/bmav_post.json
